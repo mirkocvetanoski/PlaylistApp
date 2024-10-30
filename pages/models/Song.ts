@@ -4,7 +4,7 @@ const SongSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "Name is required"],
+      required: [true, "Name of song is required"],
     },
     artist: {
       type: Schema.Types.ObjectId,
