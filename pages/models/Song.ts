@@ -10,6 +10,12 @@ const SongSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Artist",
     },
+    duration: {
+      type: Number,
+    },
+    url: {
+      type: String,
+    },
     playlists: [
       {
         type: Schema.Types.ObjectId,

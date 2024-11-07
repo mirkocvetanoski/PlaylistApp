@@ -9,7 +9,12 @@ const UserSchema = new Schema(
     },
     username: {
       type: String,
+      unique: [true, "Email already exists"],
       required: [true, "Username is required"],
+    },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
     },
     playlists: [
       {
