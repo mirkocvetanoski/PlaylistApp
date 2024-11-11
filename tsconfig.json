@@ -16,11 +16,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "pages/api/playlists/route.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/playlist.ts"],
   "exclude": ["node_modules"]
 }
