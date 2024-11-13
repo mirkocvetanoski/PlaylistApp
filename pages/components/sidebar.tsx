@@ -63,7 +63,7 @@ const Sidebar = () => {
       <Box paddingY="20px" height="100%">
         <Box width="120px" marginBottom="20px" paddingX="20px">
           <Image
-            src="./logo.svg"
+            src="../logo.svg"
             alt="Trax Logo"
             height={60}
             width={120}
@@ -101,10 +101,16 @@ const Sidebar = () => {
         <Divider color="gray.800" />
         <Box height="66%" overflowY="auto" paddingY="20px">
           <List spacing={2}>
-            {playlists.map((playlist, index) => (
-              <ListItem paddingX="20px" key={index}>
+            {playlists.map((playlist) => (
+              <ListItem paddingX="20px" key={playlist._id}>
                 <LinkBox>
-                  <Link href="/" passHref>
+                  <Link
+                    href={{
+                      pathname: "/playlist/[id]",
+                      query: { id: playlist._id },
+                    }}
+                    passHref
+                  >
                     {playlist.name}
                   </Link>
                 </LinkBox>
