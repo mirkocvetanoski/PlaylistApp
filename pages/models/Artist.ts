@@ -7,6 +7,9 @@ const ArtistSchema = new Schema(
       required: [true, "Artist name is required"],
       unique: true,
     },
+    image: {
+      type: String,
+    },
     songs: [
       {
         type: Schema.Types.ObjectId,

@@ -2,6 +2,7 @@ import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
 import GradientLayout from "./components/gradientLayout";
 import Artist from "./models/Artist";
+import connectDB from "../config/database";
 
 const Home = ({ artists }) => {
   return (
@@ -22,11 +23,20 @@ const Home = ({ artists }) => {
         </Box>
         <Flex>
           {artists.map((artist) => (
-            <Box padding="10px" width="20%" key={artist.id}>
-              <Box bg="gray.900" borderRadius="4px" padding="15px" width="100%">
+            <Box padding="10px" width="15%">
+              <Box
+                bg="gray.900"
+                borderRadius="4px"
+                padding="15px"
+                width="100%"
+                key={artist.id}
+              >
                 <Image
-                  src="https://placecats.com/millie/300/300"
+                  src={artist.image}
                   borderRadius="100%"
+                  width="175px"
+                  height="175px"
+                  justifySelf="center"
                 />
                 <Box marginTop="20px">
                   <Text fontSize="large">{artist.name}</Text>
@@ -42,6 +52,8 @@ const Home = ({ artists }) => {
 };
 
 export const getServerSideProps = async () => {
+  await connectDB();
+
   const artists = await Artist.find({});
 
   return {
