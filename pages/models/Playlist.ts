@@ -17,9 +17,6 @@ const PlaylistSchema = new Schema(
       ref: "User",
       required: true,
     },
-    userId: {
-      type: Number,
-    },
   },
   {
     timestamps: true,

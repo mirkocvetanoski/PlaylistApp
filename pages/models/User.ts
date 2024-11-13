@@ -16,6 +16,15 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
     playlists: [
       {
         type: Schema.Types.ObjectId,

@@ -3,16 +3,19 @@ import { Image } from "@chakra-ui/react";
 import GradientLayout from "./components/gradientLayout";
 import Artist from "./models/Artist";
 import connectDB from "../config/database";
+import { useMe } from "./lib/hooks";
 
 const Home = ({ artists }) => {
+  const { user } = useMe();
+
   return (
     <GradientLayout
       color="purple"
       subtitle="profile"
-      title="Mirko Cvetanoski"
-      description="15 public playlists"
+      title={`${user?.firstName} ${user?.lastName}`}
+      description={`${user?.playlists.length} public playlists`}
       roundImage
-      image="https://img.notionusercontent.com/ext/https%3A%2F%2Fdl.dropboxusercontent.com%2Fs%2Fbgiv0ssz3xpotz9%2Fpeep.png%3Fdl%3D0/size/w=2000?exp=1731401073&sig=eiu5T0nMhYE5l1-B4GLjMxo9f_Ds-ABRbVyOEWfaGNY"
+      image={user?.image}
     >
       <Box color="white" paddingX="40px">
         <Box marginBottom="40px">
@@ -23,14 +26,8 @@ const Home = ({ artists }) => {
         </Box>
         <Flex>
           {artists.map((artist) => (
-            <Box padding="10px" width="15%">
-              <Box
-                bg="gray.900"
-                borderRadius="4px"
-                padding="15px"
-                width="100%"
-                key={artist.id}
-              >
+            <Box padding="10px" width="15%" key={artist.name}>
+              <Box bg="gray.900" borderRadius="4px" padding="15px" width="100%">
                 <Image
                   src={artist.image}
                   borderRadius="100%"
