@@ -3,6 +3,7 @@ import GradientLayout from "../components/gradientLayout";
 import SongTable from "../components/songsTable";
 import { validateToken } from "../lib/auth";
 import Playlist from "../models/Playlist";
+import Song from "../models/Song";
 
 const getBGColor = () => {
   const colors = [
@@ -19,8 +20,16 @@ const getBGColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
-const PlaylistPage = ({ playlist }) => {
+const PlaylistPage = ({ playlist, songs }) => {
   const color = getBGColor();
+
+  const filteredSongsByPlaylist = [];
+
+  songs.map((song) => {
+    if (song.playlists.includes(playlist._id)) {
+      filteredSongsByPlaylist.push(song);
+    }
+  });
 
   return (
     <GradientLayout
@@ -31,7 +40,7 @@ const PlaylistPage = ({ playlist }) => {
       description={`${playlist.songs.length} songs`}
       image={playlist.image}
     >
-      <SongTable />
+      <SongTable songs={filteredSongsByPlaylist} />
     </GradientLayout>
   );
 };
@@ -41,10 +50,12 @@ export const getServerSideProps = async ({ query, req }) => {
 
   const { id } = validateToken(req.cookies.TRAX_ACCESS_TOKEN);
   const [playlist] = await Playlist.find({ _id: query.id, user: id });
+  const songs = await Song.find({});
 
   return {
     props: {
       playlist: JSON.parse(JSON.stringify(playlist)),
+      songs: JSON.parse(JSON.stringify(songs)),
     },
   };
 };
