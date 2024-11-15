@@ -10,7 +10,7 @@ const PlayerBar = () => {
   const { artists } = useArtist();
 
   const [currentArtist] = artists.filter((artist) => {
-    if (activeSong.artist === artist._id) {
+    if (activeSong?.artist === artist._id) {
       return artist;
     }
   });
