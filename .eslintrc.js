@@ -22,6 +22,8 @@ module.exports = {
   rules: {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
     "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
     "no-param-reassign": "off",
