@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import connectDB from "../../config/database";
-import GradientLayout from "../components/gradientLayout";
-import SongTable from "../components/songsTable";
+import GradientLayout from "../../components/gradientLayout";
+import SongTable from "../../components/songsTable";
 import { validateToken } from "../../lib/auth";
 import Playlist from "../../models/Playlist";
 import Song from "../../models/Song";
