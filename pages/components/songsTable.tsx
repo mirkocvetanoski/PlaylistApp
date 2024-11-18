@@ -42,7 +42,7 @@ const SongTable = ({ songs }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {songs.map((song, i) => (
+            {songs?.map((song, i) => (
               <Tr
                 sx={{
                   transition: "all .3s",
