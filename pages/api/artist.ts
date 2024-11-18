@@ -1,5 +1,5 @@
 import Artist from "../models/Artist";
-import { validateRoute } from "../lib/auth";
+import { validateRoute } from "../../lib/auth";
 import connectDB from "../../config/database";
 
 // GET api/artist

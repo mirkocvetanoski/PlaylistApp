@@ -1,5 +1,5 @@
 import Playlist from "../models/Playlist";
-import { validateRoute } from "../lib/auth";
+import { validateRoute } from "../../lib/auth";
 import connectDB from "../../config/database";
 
 // GET api/playlist

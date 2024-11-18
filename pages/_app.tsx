@@ -3,7 +3,7 @@ import { StoreProvider } from "easy-peasy";
 import PlayerLayout from "./components/playerLayout";
 import "reset-css";
 import type { AppProps } from "next/app";
-import { store } from "./lib/store";
+import { store } from "../lib/store";
 
 const theme = extendTheme({
   colors: {

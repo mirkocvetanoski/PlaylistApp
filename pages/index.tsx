@@ -3,7 +3,7 @@ import { Image } from "@chakra-ui/react";
 import GradientLayout from "./components/gradientLayout";
 import Artist from "./models/Artist";
 import connectDB from "../config/database";
-import { useMe } from "./lib/hooks";
+import { useMe } from "../lib/hooks";
 
 const Home = ({ artists }) => {
   const { user } = useMe();
