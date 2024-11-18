@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 const cookie = require("cookie");
 import connectDB from "../../config/database";
-import User from "../models/User";
+import User from "../../models/User";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {

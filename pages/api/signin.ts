@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 const cookie = require("cookie");
 import connectDB from "../../config/database";
 import { NextApiRequest, NextApiResponse } from "next";
-import User from "../models/User";
+import User from "../../models/User";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { email, password } = req.body;

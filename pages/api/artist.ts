@@ -1,4 +1,4 @@
-import Artist from "../models/Artist";
+import Artist from "../../models/Artist";
 import { validateRoute } from "../../lib/auth";
 import connectDB from "../../config/database";
 

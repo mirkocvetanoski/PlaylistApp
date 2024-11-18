@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
 import GradientLayout from "./components/gradientLayout";
-import Artist from "./models/Artist";
+import Artist from "../models/Artist";
 import connectDB from "../config/database";
 import { useMe } from "../lib/hooks";
 

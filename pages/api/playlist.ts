@@ -1,4 +1,4 @@
-import Playlist from "../models/Playlist";
+import Playlist from "../../models/Playlist";
 import { validateRoute } from "../../lib/auth";
 import connectDB from "../../config/database";
 
