@@ -4,6 +4,7 @@ module.exports = {
     // "airbnb",
     // "airbnb/hooks",
     "prettier",
+    "plugin:react/recommended",
   ],
   plugins: ["react", "@typescript-eslint", "prettier"],
   env: {
