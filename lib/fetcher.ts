@@ -1,5 +1,5 @@
 export default function fetcher(url: string, data = undefined) {
-  return fetch(`${window.location.origin}/api${url}`, {
+  return fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api${url}`, {
     method: data ? "POST" : "GET",
     credentials: "include",
     headers: {
