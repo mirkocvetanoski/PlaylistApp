@@ -1,5 +1,3 @@
-"use client";
-
 import {
   ButtonGroup,
   Box,
@@ -85,13 +83,14 @@ const Player = ({ songs, activeSong }) => {
     setIndex((state) => {
       if (shuffle) {
         const next = Math.floor(Math.random() * songs.length);
+
         if (next === state) {
           return nextSong();
         }
         return next;
-      } else {
-        return state === songs.length - 1 ? 0 : state + 1;
       }
+
+      return state === songs.length - 1 ? 0 : state + 1;
     });
   };
 
@@ -117,26 +116,24 @@ const Player = ({ songs, activeSong }) => {
   return (
     <Box>
       <Box>
-        {
-          <ReactHowler
-            playing={playing}
-            src={activeSong?.url}
-            ref={soundRef}
-            onLoad={onLoad}
-            onEnd={onEnd}
-          />
-        }
+        <ReactHowler
+          playing={playing}
+          src={activeSong?.url}
+          ref={soundRef}
+          onLoad={onLoad}
+          onEnd={onEnd}
+        />
       </Box>
       <Center color="gray.600">
         <ButtonGroup>
           <IconButton
             outline="none"
             variant="link"
-            color={shuffle ? "white" : "gray.600"}
             aria-label="shuffle"
             fontSize="24px"
-            icon={<MdShuffle />}
+            color={shuffle ? "white" : "gray.600"}
             onClick={onShuffle}
+            icon={<MdShuffle />}
           />
           <IconButton
             outline="none"
@@ -150,9 +147,9 @@ const Player = ({ songs, activeSong }) => {
             <IconButton
               outline="none"
               variant="link"
-              color="white"
               aria-label="pause"
               fontSize="40px"
+              color="white"
               icon={<MdOutlinePauseCircleFilled />}
               onClick={() => setPlayState(false)}
             />
@@ -160,9 +157,9 @@ const Player = ({ songs, activeSong }) => {
             <IconButton
               outline="none"
               variant="link"
-              color="white"
               aria-label="play"
               fontSize="40px"
+              color="white"
               icon={<MdOutlinePlayCircleFilled />}
               onClick={() => setPlayState(true)}
             />
@@ -179,11 +176,11 @@ const Player = ({ songs, activeSong }) => {
           <IconButton
             outline="none"
             variant="link"
-            color={repeat ? "white" : "gray.600"}
             aria-label="repeat"
             fontSize="24px"
-            icon={<MdOutlineRepeat />}
+            color={repeat ? "white" : "gray.600"}
             onClick={onRepeat}
+            icon={<MdOutlineRepeat />}
           />
         </ButtonGroup>
       </Center>

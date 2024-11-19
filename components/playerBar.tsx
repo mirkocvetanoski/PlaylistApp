@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import Player from "./player";
 import { useStoreState } from "easy-peasy";
+import Player from "./player";
 import { useArtist } from "../lib/hooks";
 
 const PlayerBar = () => {
@@ -20,7 +20,7 @@ const PlayerBar = () => {
       <Flex align="center">
         {activeSong ? (
           <Box padding="20px" color="white" width="30%">
-            <Text fontSize="lg">{activeSong.name}</Text>
+            <Text fontSize="large">{activeSong.name}</Text>
             <Text fontSize="sm">{currentArtist.name}</Text>
           </Box>
         ) : null}

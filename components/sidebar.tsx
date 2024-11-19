@@ -6,7 +6,6 @@ import {
   ListItem,
   ListIcon,
   Divider,
-  Center,
   LinkBox,
 } from "@chakra-ui/layout";
 import {
@@ -45,7 +44,7 @@ const musicMenu = [
   {
     name: "Favorites",
     icon: MdFavorite,
-    route: "/favorite",
+    route: "/favorites",
   },
 ];
 
