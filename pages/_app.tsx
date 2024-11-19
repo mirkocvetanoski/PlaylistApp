@@ -2,7 +2,6 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { StoreProvider } from "easy-peasy";
 import PlayerLayout from "../components/playerLayout";
 import "reset-css";
-import type { AppProps } from "next/app";
 import { store } from "../lib/store";
 
 const theme = extendTheme({
@@ -10,7 +9,7 @@ const theme = extendTheme({
     gray: {
       100: "#F5f5f5",
       200: "#EEEEEE",
-      300: "E0E0E0",
+      300: "#E0E0E0",
       400: "#BDBDBD",
       500: "#9E9E9E",
       600: "#757575",
@@ -33,7 +32,7 @@ const theme = extendTheme({
   },
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
       <StoreProvider store={store}>
@@ -47,4 +46,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </StoreProvider>
     </ChakraProvider>
   );
-}
+};
+
+export default MyApp;

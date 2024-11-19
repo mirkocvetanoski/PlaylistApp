@@ -48,7 +48,6 @@ const SongTable = ({ songs }) => {
                     bg: "rgba(255,255,255, 0.1)",
                   },
                 }}
-                key={song.id}
                 cursor="pointer"
                 onClick={() => handlePlay(song)}
               >
