@@ -4,14 +4,9 @@ import GradientLayout from "../components/gradientLayout";
 import Artist from "../models/Artist";
 import connectDB from "../config/database";
 import { useMe } from "../lib/hooks";
-import { redirect } from "next/navigation";
 
 const Home = ({ artists }) => {
   const { user } = useMe();
-
-  if (!user) {
-    redirect("/sigin");
-  }
 
   return (
     <GradientLayout
