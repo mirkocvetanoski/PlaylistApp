@@ -4,7 +4,7 @@ import User from "../models/User";
 
 export const validateRoute = (handler) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
-    const { TRAX_ACCESS_TOKEN: token } = req.cookies;
+    const token = req.cookies.TRAX_ACCESS_TOKEN;
 
     if (token) {
       let user;
@@ -18,7 +18,7 @@ export const validateRoute = (handler) => {
         }
       } catch (error) {
         res.status(401);
-        res.json({ error: "Not Authorized" });
+        res.json({ error: "Not Authorizied" });
         return;
       }
 
@@ -26,7 +26,7 @@ export const validateRoute = (handler) => {
     }
 
     res.status(401);
-    res.json({ error: "Not Authorized" });
+    res.json({ error: "Not Authorizied" });
   };
 };
 
