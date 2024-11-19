@@ -10,7 +10,7 @@ const Home = ({ artists }) => {
   const { user } = useMe();
 
   if (!user) {
-    redirect("/");
+    redirect("/sigin");
   }
 
   return (
