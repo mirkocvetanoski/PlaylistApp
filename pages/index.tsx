@@ -8,10 +8,6 @@ import { useMe } from "../lib/hooks";
 const Home = ({ artists }) => {
   const { user } = useMe();
 
-  if (!user) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <GradientLayout
       color="purple"
