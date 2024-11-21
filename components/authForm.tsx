@@ -1,7 +1,6 @@
 import { Box, Flex, Input, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState, FC } from "react";
-import { useSWRConfig } from "swr";
 import Image from "next/image";
 import { auth } from "../lib/mutations";
 
@@ -30,7 +29,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
         borderBottom="white 1px solid"
       >
         <Image
-          src="/logo.svg"
+          src="./logo.svg"
           alt="Trax Logo"
           height={60}
           width={120}
