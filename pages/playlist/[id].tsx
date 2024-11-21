@@ -22,14 +22,6 @@ const getBGColor = () => {
 const PlaylistPage = ({ playlist, songs }) => {
   const color = getBGColor();
 
-  const filteredSongsByPlaylist = [];
-
-  songs.map((song) => {
-    if (song.playlists.includes(playlist._id)) {
-      filteredSongsByPlaylist.push(song);
-    }
-  });
-
   return (
     <GradientLayout
       color={color}
@@ -39,7 +31,7 @@ const PlaylistPage = ({ playlist, songs }) => {
       description={`${playlist.songs.length} songs`}
       image={playlist.image}
     >
-      <SongTable songs={filteredSongsByPlaylist} />
+      <SongTable songs={songs} />
     </GradientLayout>
   );
 };
@@ -61,10 +53,18 @@ export const getServerSideProps = async ({ query, req }) => {
   const [playlist] = await Playlist.find({ _id: query.id, user: user.id });
   const songs = await Song.find({});
 
+  const filteredSongsByPlaylist = [];
+
+  songs.map((song) => {
+    if (song.playlists.includes(playlist._id)) {
+      filteredSongsByPlaylist.push(song);
+    }
+  });
+
   return {
     props: {
       playlist: JSON.parse(JSON.stringify(playlist)),
-      songs: JSON.parse(JSON.stringify(songs)),
+      songs: JSON.parse(JSON.stringify(filteredSongsByPlaylist)),
     },
   };
 };
