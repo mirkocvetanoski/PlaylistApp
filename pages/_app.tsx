@@ -1,3 +1,5 @@
+const dynamic = "force-dynamic";
+
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { StoreProvider } from "easy-peasy";
 import PlayerLayout from "../components/playerLayout";
