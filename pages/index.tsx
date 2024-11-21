@@ -4,11 +4,10 @@ import GradientLayout from "../components/gradientLayout";
 import Artist from "../models/Artist";
 import connectDB from "../config/database";
 import { useMe } from "../lib/hooks";
+import User from "../models/User";
+import jwt from "jsonwebtoken";
 
-const Home = ({ artists }) => {
-  const { user } = useMe();
-  console.log(user);
-
+const Home = ({ artists, user }) => {
   return (
     <GradientLayout
       color="purple"
@@ -49,16 +48,35 @@ const Home = ({ artists }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ req, res }) => {
   await connectDB();
 
   const artists = await Artist.find({});
+  const token = req.cookies.TRAX_ACCESS_TOKEN;
 
-  return {
-    props: {
-      artists: JSON.parse(JSON.stringify(artists)),
-    },
-  };
+  if (token) {
+    let user;
+
+    try {
+      const { id } = jwt.verify(token, "hello");
+      user = await User.findOne({ id: id });
+
+      if (!user) {
+        throw new Error("Not real user");
+      }
+    } catch (error) {
+      res.status(401);
+      res.json({ error: "Not Authorizied" });
+      return;
+    }
+
+    return {
+      props: {
+        artists: JSON.parse(JSON.stringify(artists)),
+        user: JSON.parse(JSON.stringify(user)),
+      },
+    };
+  }
 };
 
 export default Home;
