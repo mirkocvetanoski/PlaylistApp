@@ -1,23 +1,13 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 const signedinPages = ["/", "/playlist", "/library"];
 
-export default function middleware(req) {
-  if (signedinPages.find((p) => p === req.nextUrl.pathname)) {
-    const [...cookies] = req.cookies;
+export default function middleware(request: NextRequest) {
+  if (signedinPages.find((p) => p === request.nextUrl.pathname)) {
+    const token = [...request.cookies].length;
 
-    let token: string;
-
-    if ([...cookies].length > 0) {
-      token = cookies[0][1].value;
-    } else {
-      token = "";
-    }
-
-    if (token === "") {
-      const url = req.nextUrl.clone();
-      url.pathname = "/signin";
-      return NextResponse.rewrite(url);
+    if (!token) {
+      return NextResponse.rewrite(new URL("/signin", request.url));
     }
   }
 }
