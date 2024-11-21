@@ -15,8 +15,7 @@ import {
   MdPlaylistAdd,
   MdFavorite,
 } from "react-icons/md";
-import { usePlaylist } from "../lib/hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const navMenu = [
   {
@@ -50,9 +49,17 @@ const musicMenu = [
 ];
 
 const Sidebar = () => {
-  const { playlists } = usePlaylist();
+  const [playlists, setPlaylists] = useState([]);
 
-  useEffect(() => {}, [playlists]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`/api/playlist`);
+      const data = await res.json();
+      setPlaylists(data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Box
