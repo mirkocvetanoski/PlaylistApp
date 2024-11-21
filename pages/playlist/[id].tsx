@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-import connectDB from "../../config/database";
 import GradientLayout from "../../components/gradientLayout";
 import SongTable from "../../components/songsTable";
 import { validateToken } from "../../lib/auth";
@@ -47,8 +45,6 @@ const PlaylistPage = ({ playlist, songs }) => {
 };
 
 export const getServerSideProps = async ({ query, req }) => {
-  await connectDB();
-
   let user;
 
   try {

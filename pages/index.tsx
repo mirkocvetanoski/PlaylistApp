@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
 import GradientLayout from "../components/gradientLayout";
