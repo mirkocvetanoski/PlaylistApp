@@ -29,7 +29,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
         borderBottom="white 1px solid"
       >
         <Image
-          src="./logo.svg"
+          src="/logo.svg"
           alt="Trax Logo"
           height={60}
           width={120}

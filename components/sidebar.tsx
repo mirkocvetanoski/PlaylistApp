@@ -62,7 +62,7 @@ const Sidebar = () => {
       <Box paddingY="20px" height="100%">
         <Box width="120px" marginBottom="20px" paddingX="20px">
           <Image
-            src="./logo.svg"
+            src="/logo.svg"
             alt="Trax Logo"
             height={60}
             width={120}
