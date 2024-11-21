@@ -1,6 +1,8 @@
 import useSWR from "swr";
 import fetcher from "./fetcher";
 
+console.log(fetcher);
+
 export const useMe = () => {
   const { data, error } = useSWR("/me", fetcher);
 
@@ -23,7 +25,7 @@ export const usePlaylist = () => {
 export const useArtist = () => {
   const { data, error } = useSWR("/artist", fetcher);
   return {
-    playlists: (data as any) || [],
+    artists: (data as any) || [],
     isLoading: !data && !error,
     isError: error,
   };
