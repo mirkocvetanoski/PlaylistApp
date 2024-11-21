@@ -55,7 +55,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/playlist`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/playlist`);
       const data = await res.json();
       setPlaylists(data);
     };
