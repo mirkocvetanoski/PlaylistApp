@@ -3,7 +3,6 @@ import { Image } from "@chakra-ui/react";
 import GradientLayout from "../components/gradientLayout";
 import Artist from "../models/Artist";
 import connectDB from "../config/database";
-import { useMe } from "../lib/hooks";
 import User from "../models/User";
 import jwt from "jsonwebtoken";
 
@@ -55,20 +54,8 @@ export const getServerSideProps = async ({ req, res }) => {
   const token = req.cookies.TRAX_ACCESS_TOKEN;
 
   if (token) {
-    let user;
-
-    try {
-      const { id } = jwt.verify(token, "hello");
-      user = await User.findOne({ id: id });
-
-      if (!user) {
-        throw new Error("Not real user");
-      }
-    } catch (error) {
-      res.status(401);
-      res.json({ error: "Not Authorizied" });
-      return;
-    }
+    const { id } = jwt.verify(token, "hello");
+    const user = await User.findOne({ id: id });
 
     return {
       props: {

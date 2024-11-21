@@ -16,6 +16,7 @@ import {
   MdFavorite,
 } from "react-icons/md";
 import { usePlaylist } from "../lib/hooks";
+import { useEffect } from "react";
 
 const navMenu = [
   {
@@ -50,6 +51,8 @@ const musicMenu = [
 
 const Sidebar = () => {
   const { playlists } = usePlaylist();
+
+  useEffect(() => {}, [playlists]);
 
   return (
     <Box
